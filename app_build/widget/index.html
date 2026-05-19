@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraStore — Premium Sunglasses Storefront</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #818cf8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 24px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 32px;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--text);
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      margin: 0 0 16px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 0 32px;
+      font-weight: 300;
+    }
+    .cta-btn {
+      background: linear-gradient(135deg, #818cf8, #a78bfa);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(129, 140, 248, 0.3);
+      transition: all 0.3s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(129, 140, 248, 0.4);
+    }
+    .products {
+      padding: 40px 80px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+    .product-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .product-img {
+      height: 200px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.01);
+      border: 1px solid rgba(255,255,255,0.02);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .product-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+    .product-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">AuraStore</div>
+    <nav>
+      <a href="#">Sunglasses</a>
+      <a href="#">Prescription</a>
+      <a href="#">About</a>
+      <a href="#">Journal</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Future of Optics.</h1>
+      <p>Handcrafted Japanese acetate frames paired with high-performance polarized lenses. Built to last a lifetime.</p>
+      <button class="cta-btn">Explore Collection</button>
+    </section>
+
+    <section class="products">
+      <div class="product-card">
+        <div class="product-img">🕶️</div>
+        <div class="product-title">KAIZEN // Midnight Matte</div>
+        <div class="product-price">$240.00</div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🕶️</div>
+        <div class="product-title">SHIBUMI // Tortoise Gloss</div>
+        <div class="product-price">$260.00</div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🕶️</div>
+        <div class="product-title">WABI-SABI // Rose Tint</div>
+        <div class="product-price">$245.00</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Embed support chat widget script -->
+  <script src="/widget/chat-widget.js"></script>
+</body>
+</html>
