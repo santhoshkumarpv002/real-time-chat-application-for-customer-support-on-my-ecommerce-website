@@ -9,6 +9,21 @@ import Dashboard from './pages/Dashboard';
 
 export default function App() {
   const [auth, setAuth] = useState(null);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  // Apply theme class to document body
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
 
   // Restore auth from localStorage on mount
   useEffect(() => {
@@ -16,7 +31,6 @@ export default function App() {
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        // Check if token is still somewhat valid (basic check)
         if (parsed.token && parsed.agent) {
           setAuth(parsed);
         }
@@ -40,5 +54,10 @@ export default function App() {
     return <Login onLogin={handleLogin} />;
   }
 
-  return <Dashboard auth={auth} onLogout={handleLogout} />;
+  return <Dashboard
+    auth={auth}
+    onLogout={handleLogout}
+    theme={theme}
+    toggleTheme={toggleTheme}
+  />;
 }

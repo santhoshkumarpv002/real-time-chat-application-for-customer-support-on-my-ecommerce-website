@@ -2,7 +2,7 @@
  * AgentHeader.jsx — Top bar with branding, connection status, and agent info
  */
 
-export default function AgentHeader({ agent, isConnected, onLogout }) {
+export default function AgentHeader({ agent, isConnected, onLogout, theme, toggleTheme }) {
   const initials = agent.name
     ? agent.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2)
     : '??';
@@ -43,6 +43,21 @@ export default function AgentHeader({ agent, isConnected, onLogout }) {
 
         <div className="agent-avatar">{initials}</div>
         <span className="agent-name">{agent.name}</span>
+
+        <button
+          className="filter-btn"
+          onClick={toggleTheme}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            background: theme === 'dark' ? 'var(--color-primary)' : 'transparent',
+            color: theme === 'dark' ? 'white' : 'var(--text-secondary)',
+            borderColor: theme === 'dark' ? 'var(--color-primary)' : 'var(--border-subtle)'
+          }}
+        >
+          {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+        </button>
 
         <button className="logout-btn" onClick={onLogout}>
           Sign Out
