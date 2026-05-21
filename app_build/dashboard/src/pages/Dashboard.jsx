@@ -94,7 +94,7 @@ function reducer(state, action) {
   }
 }
 
-export default function Dashboard({ auth, onLogout }) {
+export default function Dashboard({ auth, onLogout, theme, toggleTheme }) {
   const { token, agent } = auth;
   const { isConnected, emit, on, off } = useSocket(token);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -237,7 +237,13 @@ export default function Dashboard({ auth, onLogout }) {
 
   return (
     <div className="dashboard">
-      <AgentHeader agent={agent} isConnected={isConnected} onLogout={onLogout} />
+      <AgentHeader
+        agent={agent}
+        isConnected={isConnected}
+        onLogout={onLogout}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
 
       <ChatQueue
         sessions={filteredSessions}
